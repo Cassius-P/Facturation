@@ -1,0 +1,55 @@
+﻿@page "/factures"
+@using Facturations.Shared
+@inject HttpClient Http
+@inject IJSRuntime JS;
+
+<h1>Factures</h1>
+
+<p>Retrouvez ici vos différentes factures</p>
+
+@if (forecasts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th class="th-sm">Numéro Facture</th>
+                <th class="th-sm">Date Emmission</th>
+                <th class="th-sm">Date Réglement</th>
+                <th class="th-sm">Montant reglé</th>
+                <th class="th-sm">Montant dû</th>
+                <th class="th-sm">Client</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var forecast in forecasts)
+            {
+            <tr>
+                <td>@forecast.NumFacture</td>
+                <td>@forecast.DateE.ToShortDateString()</td>
+                <td>@forecast.DateR.ToShortDateString()</td>
+                <td>@forecast.MontantR</td>
+                <td>@forecast.MontantD</td>
+                <td>@forecast.Client</td>
+            </tr>
+            }
+
+
+        </tbody>
+    </table>
+
+}
+
+@code {
+    private WeatherForecast[] forecasts;
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+
+    }
+
+}

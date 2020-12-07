@@ -1,0 +1,88 @@
+﻿@page "/"
+@using Facturations.Shared
+@using System.Globalization 
+@inject HttpClient Http
+
+
+<h1>Chiffres d'affaires</h1>
+Retrouvez ici vos chiffres d'affaire par mois
+<div class="container wrap ">
+    @foreach (var date in CAR)
+    {
+        <div class="row wrap justify-content-around mt-3">
+            <div class="col-11">
+                <h5 class="text-capitalize">@date.Key</h5>
+            </div>
+
+            <div class="card border-warning mb-3 col-lg-5 col-md-5 col-sm-11 p-0">
+                <div class="card-header">Chiffre d'affaire réél</div>
+                <div class="card-body text-warning">
+                    <h5 class="card-title">@date.Value€ </h5>
+                
+                </div>
+            </div>
+            <div class="card border-success mb-3 col-lg-5 col-md-5 col-sm-11 p-0">
+                <div class="card-header">Chiffre d'affaire attendu</div>
+                <div class="card-body text-success">
+                    <h5 class="card-title">@CAD[date.Key]€</h5>
+                    @if (CAD[date.Key] != date.Value)
+                    {
+                        <p>@(CAD[date.Key]-date.Value)€ attendus</p>
+                    }
+
+                </div>
+            </div>
+        </div>
+        
+    }
+</div>
+
+
+
+@code {
+
+    public struct Montants
+    {
+        public int Du;
+        public double Reel;
+    }
+
+    private WeatherForecast[] forecasts;
+    private Dictionary<string, int> CAR = new Dictionary<string, int>();
+    private Dictionary<string, int> CAD = new Dictionary<string, int>();
+
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        
+        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+        foreach (var forecast in forecasts)
+        {
+            var annee = forecast.DateE.Year;
+            var mois = forecast.DateE.Month;
+            var moisAnnee =  forecast.DateE.ToString("MMMM yyyy", new CultureInfo("fr-FR", false)).ToString();
+            var du = forecast.MontantD;
+            var regle = forecast.MontantR;
+
+
+            if (CAR.ContainsKey(moisAnnee))
+            {
+                int tmpR = CAR[moisAnnee];
+                int tmpD = CAD[moisAnnee];
+
+                CAR[moisAnnee] += regle;
+                CAD[moisAnnee] += regle;
+            }
+            else
+            {
+                CAR.Add(moisAnnee, regle);
+                CAD.Add(moisAnnee, du);
+            }
+
+        }
+    }
+
+
+}
