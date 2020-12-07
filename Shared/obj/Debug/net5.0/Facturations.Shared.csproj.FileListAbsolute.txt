@@ -10,3 +10,15 @@ D:\EPSI\Dev\C#\Facturations\Shared\obj\Debug\net5.0\Facturations.Shared.csproj.C
 D:\EPSI\Dev\C#\Facturations\Shared\obj\Debug\net5.0\Facturations.Shared.dll
 D:\EPSI\Dev\C#\Facturations\Shared\obj\Debug\net5.0\ref\Facturations.Shared.dll
 D:\EPSI\Dev\C#\Facturations\Shared\obj\Debug\net5.0\Facturations.Shared.pdb
+D:\EPSI\Dev\F\Shared\bin\Debug\net5.0\Facturations.Shared.deps.json
+D:\EPSI\Dev\F\Shared\bin\Debug\net5.0\Facturations.Shared.dll
+D:\EPSI\Dev\F\Shared\bin\Debug\net5.0\ref\Facturations.Shared.dll
+D:\EPSI\Dev\F\Shared\bin\Debug\net5.0\Facturations.Shared.pdb
+D:\EPSI\Dev\F\Shared\obj\Debug\net5.0\Facturations.Shared.csprojAssemblyReference.cache
+D:\EPSI\Dev\F\Shared\obj\Debug\net5.0\Facturations.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\EPSI\Dev\F\Shared\obj\Debug\net5.0\Facturations.Shared.AssemblyInfoInputs.cache
+D:\EPSI\Dev\F\Shared\obj\Debug\net5.0\Facturations.Shared.AssemblyInfo.cs
+D:\EPSI\Dev\F\Shared\obj\Debug\net5.0\Facturations.Shared.csproj.CoreCompileInputs.cache
+D:\EPSI\Dev\F\Shared\obj\Debug\net5.0\Facturations.Shared.dll
+D:\EPSI\Dev\F\Shared\obj\Debug\net5.0\ref\Facturations.Shared.dll
+D:\EPSI\Dev\F\Shared\obj\Debug\net5.0\Facturations.Shared.pdb
